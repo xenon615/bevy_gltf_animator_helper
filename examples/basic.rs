@@ -32,7 +32,7 @@ fn startup(
     al.brightness = 200.;
     cmd.spawn((
         Camera3d::default(),
-        Transform::from_xyz(1., 3., -8.).looking_at(Vec3::ZERO.with_y(1.), Vec3::Y),
+        Transform::from_xyz(0., 3., -8.).looking_at(Vec3::ZERO.with_y(1.), Vec3::Y),
         Tonemapping::ReinhardLuminance
     ));
     cmd.spawn((
@@ -57,34 +57,28 @@ fn startup(
     let sh_girl = assets.load(GltfAssetLabel::Scene(0).from_asset(girl_path));
     let sh_man = assets.load(GltfAssetLabel::Scene(0).from_asset(man_path));
 
-    let mut x = 0.;
-    for i in 0 .. 3 {
-        x += 1.5 * i as f32 * (if i % 2 == 0 {1.} else {-1.});
-        cmd.spawn((
-            SceneRoot(sh_girl.clone()),
-            NotShadowCaster,
-            NotShadowReceiver,
-            AniData::new("Girl", i),
-            Transform::from_xyz(x, 0., 0.)
-        ));
+    let mut x = -5.;
+    for i in 0 .. 6 {
+        x += 1.2;
+        if i % 2 == 0 {
+            cmd.spawn((
+                SceneRoot(sh_girl.clone()),
+                NotShadowCaster,
+                NotShadowReceiver,
+                AniData::new("Girl", i % ANI_COUNT_GIRL),
+                Transform::from_xyz(x, 0., 0.)
+            ));
+        } else {
+            cmd.spawn((
+                SceneRoot(sh_man.clone()),
+                NotShadowCaster,
+                NotShadowReceiver,
+                AniData::new("Man", i % ANI_COUNT_MAN),
+                Transform::from_xyz(x, 0., 0.)
+            ));
+
+        }
     }
-
-
-    let mut x = 0.;
-    let mut z = 0.;
-    for i in 0 .. 4 {
-        x += 2. * i as f32 * (if i % 2 == 0 {1.} else {-1.});
-        z = if i % 2 == 0 {-3.} else {3.};
-        cmd.spawn((
-            SceneRoot(sh_man.clone()),
-            NotShadowCaster,
-            NotShadowReceiver,
-            AniData::new("Man", i),
-            Transform::from_xyz(x, 0., z)
-        ));
-    }
-
-
 }
 
 // ---
