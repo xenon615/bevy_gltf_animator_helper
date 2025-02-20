@@ -1,0 +1,4 @@
+```
+cargo r --example basic
+
+```
