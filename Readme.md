@@ -22,14 +22,12 @@ Then
 .add_plugins(
     AnimatorHelperPlugin
 )
-
 ```
 Then please look into example ("simple" or "basic") 
 
 Assume you have 
 ```
 .add_systems(Startup, startup)
-
 ```
 
 so 
@@ -54,7 +52,7 @@ fn startup(
 ```
 switch animation
 
-```
+```rust
 fn switch_animation(
     mut q: Query<&mut AniData>,
 ) {
@@ -62,7 +60,6 @@ fn switch_animation(
         ad.animation_index = (ad.animation_index + 1) % ANI_COUNT;
     }
 }
-
 ```
 
 
