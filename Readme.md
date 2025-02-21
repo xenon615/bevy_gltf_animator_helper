@@ -3,13 +3,13 @@ Made as attempt to simplify process of animation of gltf models.
 
 Currently 2 examples available (simple and basic)
 
-```bash
+```sh
 cargo r --example basic
 ```
 
 ## Usage
 Add to your dependencies
-```
+```toml
 [dependencies]
 bevy_gltf_animator_helper = {git = "https://github.com/xenon615/bevy_gltf_animator_helper"}
 ```  
