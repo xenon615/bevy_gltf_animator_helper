@@ -24,7 +24,7 @@ Then
 )
 
 ```
-Then prease refer to example ("simple" or "basic") 
+Then please look into example ("simple" or "basic") 
 
 Assume you have 
 ```
@@ -48,7 +48,7 @@ fn startup(
 
     cmd.spawn((
         SceneRoot(sh.clone()),
-        AniData::new("Lady", 0),   // "Lady" - animation key, 0 in this case - initial animation index
+        AniData::new("Lady", 0),   // "Lady" - animation key, "0" in this case - initial animation index
     ));
 }
 ```
