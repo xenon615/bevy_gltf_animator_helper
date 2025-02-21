@@ -30,6 +30,7 @@ features = [
 "hdr",
 "multi_threaded",
 "png",	
+"jpeg",
  "dynamic_linking", 
 ]
 
@@ -44,6 +45,8 @@ features = [
 
 [[example]]
 name = "basic" 
+[[example]]
+name = "simple" 
 
 
 

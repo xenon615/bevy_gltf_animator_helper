@@ -1,3 +1,4 @@
 /target
-/examples/assets/girl.glb
-/examples/assets/man.glb
+# /examples/assets/girl.glb
+# /examples/assets/man.glb
+/art
