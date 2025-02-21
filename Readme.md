@@ -3,7 +3,7 @@ Made as attempt to simplify process of animation of gltf models.
 
 Currently 2 examples available (simple and basic)
 
-```
+```bash
 cargo r --example basic
 ```
 
@@ -14,11 +14,11 @@ Add to your dependencies
 bevy_gltf_animator_helper = {git = "https://github.com/xenon615/bevy_gltf_animator_helper"}
 ```  
 Then 
-```
+```rust
 use bevy_gltf_animator_helper::{AllAnimations, AniData, AnimatorHelperPlugin};
 ```
 Then
-```
+```rust
 .add_plugins(
     AnimatorHelperPlugin
 )
@@ -26,12 +26,12 @@ Then
 Then please look into example ("simple" or "basic") 
 
 Assume you have 
-```
+```rust
 .add_systems(Startup, startup)
 ```
 
 so 
-```
+```rust
 const ANI_COUNT: usize = 13;   //  count  animations to use from glb
 
 fn startup(
