@@ -17,11 +17,9 @@ bevy_gltf_animator_helper = {git = "https://github.com/xenon615/bevy_gltf_animat
 Check out  [/examples/basic.rs](/examples/basic.rs) for further information
 
 ## Version Compatibility
-| ---- | ------------------------- |
 | bevy | bevy_gltf_animator_helper |
 | ---- | ------------------------- |
 | 0.15 | 0.1                       |
-| ---- | ------------------------- |
 
 
 
