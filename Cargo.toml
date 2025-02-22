@@ -45,8 +45,6 @@ features = [
 
 [[example]]
 name = "basic" 
-[[example]]
-name = "simple" 
 
 
 

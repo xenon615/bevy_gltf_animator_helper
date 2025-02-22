@@ -9,58 +9,22 @@ cargo r --example basic
 
 ## Usage
 Add to your dependencies
+
 ```toml
 [dependencies]
 bevy_gltf_animator_helper = {git = "https://github.com/xenon615/bevy_gltf_animator_helper"}
 ```  
-Then 
-```rust
-use bevy_gltf_animator_helper::{AllAnimations, AniData, AnimatorHelperPlugin};
-```
-Then
-```rust
-.add_plugins(
-    AnimatorHelperPlugin
-)
-```
-Then please look into example ("simple" or "basic") 
+Check out  [/examples/basic.rs](/examples/basic.rs) for further information
 
-Assume you have 
-```rust
-.add_systems(Startup, startup)
-```
+## Version Compatibility
+| ---- | ------------------------- |
+| bevy | bevy_gltf_animator_helper |
+| ---- | ------------------------- |
+| 0.15 | 0.1                       |
+| ---- | ------------------------- |
 
-so 
-```rust
-const ANI_COUNT: usize = 13;   //  count  animations to use from glb
 
-fn startup(
-    mut cmd: Commands,
-    assets: ResMut<AssetServer>,
-    mut all_animations: ResMut<AllAnimations>,
-    mut graphs: ResMut<Assets<AnimationGraph>>,
 
-) {
-    all_animations.add("Lady", "girl.glb", ANI_COUNT, &mut graphs, &assets);  // "Lady" in this case - is animation key
-    let sh = assets.load(GltfAssetLabel::Scene(0).from_asset("girl.glb"));
-
-    cmd.spawn((
-        SceneRoot(sh.clone()),
-        AniData::new("Lady", 0),   // "Lady" - animation key, "0" in this case - initial animation index
-    ));
-}
-```
-switch animation
-
-```rust
-fn switch_animation(
-    mut q: Query<&mut AniData>,
-) {
-    for mut ad in &mut q {
-        ad.animation_index = (ad.animation_index + 1) % ANI_COUNT;
-    }
-}
-```
 
 
 

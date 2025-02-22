@@ -4,16 +4,20 @@ use bevy::utils::HashMap;
 use std::time::Duration;
 
 // ---
+// ubused at the moment
 
-#[derive(Event)]
-pub struct AnimationChanged;
+// #[derive(Event)]
+// pub struct AnimationChanged;
 
 
 #[derive(Component)]
 pub struct AniData {
     pub animation_index: usize,
+    /// current animation index 
     pub player_entity: Entity,
+    // entity of AnimatiionPlayer component (for convenience)
     pub animation_key: &'static str
+    // key for link with animation set
 }
 
 impl AniData {
@@ -68,6 +72,7 @@ impl Plugin for AnimatorHelperPlugin {
         app
         .insert_resource(AllAnimations(HashMap::new()))
         .add_observer(setup)
+        // I haven't decided yet which method to use
         .add_systems(Update, switch)  // this ?
         // .add_observer(switch)     // or that ? 
         ;
