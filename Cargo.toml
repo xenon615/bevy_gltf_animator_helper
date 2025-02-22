@@ -2,6 +2,10 @@
 name = "bevy_gltf_animator_helper"
 version = "0.1.0"
 edition = "2021"
+authors = ["xenon615"]
+keywords = ["gamedev", "bevy", "animation"]
+categories = ["game-development"]
+
 
 [profile.dev]
 opt-level = 1
