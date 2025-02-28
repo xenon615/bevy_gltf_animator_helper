@@ -21,8 +21,9 @@ fn main() {
 // yuu can use Gltf Viewer (https://gltf-viewer.donmccurdy.com/)  to find out this number
 // you can choose a lower number to avoid loading unnecessary animations.
 
-const ANIMATION_COUNT_M1: usize = 13;   // count for first model
-const ANIMATION_COUNT_M2: usize = 5;   // count for second model
+const ANIMATION_COUNT_M1: usize = 2;   // count for first model
+const ANIMATION_COUNT_M2: usize = 2;   // count for second model
+const ANIMATION_COUNT_M3: usize = 1;   // count for third model
 
 fn startup(
     mut cmd: Commands,
@@ -37,7 +38,7 @@ fn startup(
     al.brightness = 200.;
     cmd.spawn((
         Camera3d::default(),
-        Transform::from_xyz(0., 3., -8.).looking_at(Vec3::ZERO.with_y(1.), Vec3::Y),
+        Transform::from_xyz(0., 3., -5.).looking_at(Vec3::ZERO.with_y(1.), Vec3::Y),
         Tonemapping::ReinhardLuminance
     ));
     cmd.spawn((
@@ -57,36 +58,43 @@ fn startup(
     // in your case it will most likely be a path relative to the "assets" folder
     let m1_path = concat!(env!("CARGO_MANIFEST_DIR"), "/examples/assets/m1.glb");
     let m2_path = concat!(env!("CARGO_MANIFEST_DIR"), "/examples/assets/m2.glb");
+    let m3_path = concat!(env!("CARGO_MANIFEST_DIR"), "/examples/assets/m3.glb");
 
     // we create two animation sets , m1 and m2 are animation keys
     all_animations.add("m1", m1_path, ANIMATION_COUNT_M1, &mut graphs, &assets);
     all_animations.add("m2", m2_path, ANIMATION_COUNT_M2, &mut graphs, &assets);
+    all_animations.add("m3", m3_path, ANIMATION_COUNT_M3, &mut graphs, &assets);
+
 
     let sh_m1 = assets.load(GltfAssetLabel::Scene(0).from_asset(m1_path));
     let sh_m2 = assets.load(GltfAssetLabel::Scene(0).from_asset(m2_path));
+    let sh_m3 = assets.load(GltfAssetLabel::Scene(0).from_asset(m3_path));
 
-    let mut x = -5.;
-    for i in 0 .. 6 {
-        x += 1.2;
-        if i % 2 == 0 {
-            cmd.spawn((
-                SceneRoot(sh_m1.clone()),
-                NotShadowCaster,
-                NotShadowReceiver,
-                AniData::new("m1", i % ANIMATION_COUNT_M1),  // Parameters: "m1"  - animation key to link with the animation set defined above, initial animation index
-                Transform::from_xyz(x, 0., 0.)
-            ));
-        } else {
-            cmd.spawn((
-                SceneRoot(sh_m2.clone()),
-                NotShadowCaster,
-                NotShadowReceiver,
-                AniData::new("m2", i % ANIMATION_COUNT_M2), // look "m1" above
-                Transform::from_xyz(x, 0., 0.)
-            ));
 
-        }
-    }
+    cmd.spawn((
+        SceneRoot(sh_m1.clone()),
+        NotShadowCaster,
+        NotShadowReceiver,
+        AniData::new("m1", 0),  // Parameters: "m1"  - animation key to link with the animation set defined above, initial animation index
+        Transform::from_xyz(0., 0., 0.)
+    ));
+
+    cmd.spawn((
+        SceneRoot(sh_m2.clone()),
+        NotShadowCaster,
+        NotShadowReceiver,
+        AniData::new("m2", 1), // look "m1" above
+        Transform::from_xyz(-2., 0., 0.)
+    ));
+
+    cmd.spawn((
+        SceneRoot(sh_m3.clone()),
+        NotShadowCaster,
+        NotShadowReceiver,
+        AniData::new("m3", 0), // look "m1" above
+        Transform::from_xyz(2., 0., 0.).with_scale(Vec3::splat(0.25))
+    ));
+
 }
 
 // ---
@@ -96,6 +104,13 @@ fn switch_animation(
 ) {
     for mut ad in &mut q {
         // set new value for AniData animation index to switch animation
-        ad.animation_index = (ad.animation_index + 1) % (if ad.animation_key == "m1" {ANIMATION_COUNT_M1} else {ANIMATION_COUNT_M2});
+
+        let div = match ad.animation_key {
+            "m1" => ANIMATION_COUNT_M1,
+            "m2" => ANIMATION_COUNT_M2,
+            _ => 1
+        };
+
+        ad.animation_index = (ad.animation_index + 1) % div;
     }
 }

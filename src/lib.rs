@@ -15,7 +15,7 @@ pub struct AniData {
     pub animation_index: usize,
     /// current animation index 
     pub player_entity: Entity,
-    // entity of AnimatiionPlayer component (for convenience)
+    /// entity of AnimatiionPlayer component (for convenience)
     pub animation_key: &'static str
     // key for link with animation set
 }

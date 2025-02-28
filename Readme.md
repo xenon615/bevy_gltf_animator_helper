@@ -1,7 +1,10 @@
 # Bevy Gltf Animator Helper
 Made as attempt to simplify process of animation of gltf models. 
 
-Currently 2 examples available (simple and basic)
+## Examples
+I drew and animated the models myself. That's why they are so scary. I have no doubt that you will find better ones for yourself. :)
+
+![scary models](img/image.png)
 
 ```sh
 cargo r --example basic
