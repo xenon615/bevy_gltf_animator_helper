@@ -18,7 +18,7 @@ codegen-units = 1
 # opt-level = 'z' # wasm less size 
 
 [dev-dependencies.bevy]
-version = "0.15.2"
+version = "0.15.3"
 default-features = false
 features = [
 "animation",	
@@ -39,7 +39,7 @@ features = [
 ]
 
 [dependencies.bevy]
-version = "0.15.2"
+version = "0.15"
 default-features = false
 features = [
 "animation",
