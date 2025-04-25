@@ -38,6 +38,7 @@ features = [
 version = "0.16.0"
 default-features = false
 features = [
+    "bevy_gltf",
     "animation",
     "multi_threaded",
     "std", 
