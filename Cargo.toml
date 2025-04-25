@@ -1,6 +1,6 @@
 [package]
 name = "bevy_gltf_animator_helper"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["xenon615"]
 keywords = ["gamedev", "bevy", "animation"]
@@ -18,33 +18,39 @@ codegen-units = 1
 # opt-level = 'z' # wasm less size 
 
 [dev-dependencies.bevy]
-version = "0.15.3"
+version = "0.16.0"
+# default-features = true
 default-features = false
 features = [
-"animation",	
-"bevy_animation",	
-"bevy_core_pipeline",	
-"bevy_gltf",	
-"bevy_pbr",	
-"bevy_render",	
-"bevy_scene",	
-"bevy_state",
-"bevy_window",
-"bevy_winit",
-"hdr",
-"multi_threaded",
-"png",	
-"jpeg",
- "dynamic_linking", 
+    # "animation",	
+    # "bevy_animation",
+    # "bevy_asset",	
+    "bevy_core_pipeline",	
+    "bevy_gltf",	
+    "bevy_pbr",	
+    "bevy_render",	
+    # "bevy_scene",	
+    # "bevy_state",
+    "bevy_window",
+    "bevy_winit",
+    # "hdr",
+    "multi_threaded",
+    # "png",	
+    # "jpeg",
+    "dynamic_linking", 
+    "std", 
+    "async_executor",
 ]
 
 [dependencies.bevy]
-version = "0.15"
+version = "0.16.0"
 default-features = false
 features = [
-"animation",
-"bevy_animation",
-"multi_threaded",
+    "animation",
+    # "bevy_animation",
+    "multi_threaded",
+    "std", 
+    "async_executor" 
 ]
 
 [[example]]

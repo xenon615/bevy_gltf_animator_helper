@@ -1,14 +1,11 @@
-use bevy::prelude::*;
-use bevy::scene::SceneInstanceReady;
-use bevy::utils::HashMap;
+use bevy:: {
+    prelude::*,
+    scene::SceneInstanceReady,
+    platform::collections::HashMap
+};
 use std::time::Duration;
 
 // ---
-// ubused at the moment
-
-// #[derive(Event)]
-// pub struct AnimationChanged;
-
 
 #[derive(Component)]
 pub struct AniData {
@@ -72,9 +69,7 @@ impl Plugin for AnimatorHelperPlugin {
         app
         .insert_resource(AllAnimations(HashMap::new()))
         .add_observer(setup)
-        // I haven't decided yet which method to use
-        .add_systems(Update, switch)  // this ?
-        // .add_observer(switch)     // or that ? 
+        .add_systems(Update, switch)
         ;
     }
 }
@@ -89,7 +84,7 @@ fn setup(
     mut player_q: Query<&mut AnimationPlayer>,
     children: Query<&Children> 
 ) {
-    let parent_e = tr.entity();
+    let parent_e = tr.target();
 
     let Ok(mut ani_data) = akq.get_mut(parent_e) else {
         return;
@@ -101,7 +96,6 @@ fn setup(
 
     for c in children.iter_descendants(parent_e) {
         if let Ok(mut player) = player_q.get_mut(c) {
-            // let initial_animation = ani_set.animations.len() - 1;
             let initial_animation = ani_data.animation_index;
             let mut transitions = AnimationTransitions::new();
             transitions
@@ -123,7 +117,6 @@ fn setup(
 // ---
 
 pub fn switch(
-    // _tr: Trigger<AnimationChanged>,  // this or that ?
     mut animation_players: Query<(&mut AnimationPlayer, &mut AnimationTransitions)>,
     objects_q: Query<&AniData, Changed<AniData>>,
     all_animations: Res<AllAnimations>,

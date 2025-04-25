@@ -23,7 +23,7 @@ Check out  [/examples/basic.rs](/examples/basic.rs) for further information
 | bevy | bevy_gltf_animator_helper |
 | ---- | ------------------------- |
 | 0.15 | 0.1                       |
-
+| 0.16 | 0.2                       |
 
 
 
