@@ -15,7 +15,7 @@ Add to your dependencies
 
 ```toml
 [dependencies]
-bevy_gltf_animator_helper = {git = "https://github.com/xenon615/bevy_gltf_animator_helper"}
+bevy_gltf_animator_helper = {git = "https://github.com/xenon615/bevy_gltf_animator_helper", branch="v0.1"}
 ```  
 Check out  [/examples/basic.rs](/examples/basic.rs) for further information
 
