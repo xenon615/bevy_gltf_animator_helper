@@ -22,21 +22,13 @@ version = "0.16.0"
 # default-features = true
 default-features = false
 features = [
-    # "animation",	
-    # "bevy_animation",
-    # "bevy_asset",	
     "bevy_core_pipeline",	
     "bevy_gltf",	
     "bevy_pbr",	
     "bevy_render",	
-    # "bevy_scene",	
-    # "bevy_state",
     "bevy_window",
     "bevy_winit",
-    # "hdr",
     "multi_threaded",
-    # "png",	
-    # "jpeg",
     "dynamic_linking", 
     "std", 
     "async_executor",
@@ -47,7 +39,6 @@ version = "0.16.0"
 default-features = false
 features = [
     "animation",
-    # "bevy_animation",
     "multi_threaded",
     "std", 
     "async_executor" 
