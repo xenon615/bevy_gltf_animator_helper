@@ -18,7 +18,7 @@ codegen-units = 1
 # opt-level = 'z' # wasm less size 
 
 [dev-dependencies.bevy]
-version = "0.16.0"
+version = "0.17.1"
 # default-features = true
 default-features = false
 features = [
@@ -32,16 +32,15 @@ features = [
     "dynamic_linking", 
     "std", 
     "async_executor",
+    "reflect_auto_register"
+
 ]
 
 [dependencies.bevy]
-version = "0.16.0"
+version = "0.17.1"
 default-features = false
 features = [
     "animation",
-    "multi_threaded",
-    "std", 
-    "async_executor" 
 ]
 
 [[example]]
