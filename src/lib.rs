@@ -1,7 +1,8 @@
 use bevy:: {
     prelude::*,
     scene::SceneInstanceReady,
-    platform::collections::HashMap
+    platform::collections::HashMap,
+    gltf::GltfAssetLabel,
 };
 use std::time::Duration;
 
