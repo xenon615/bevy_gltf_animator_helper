@@ -78,14 +78,14 @@ impl Plugin for AnimatorHelperPlugin {
 // ---
 
 fn setup(
-    tr: Trigger<SceneInstanceReady>,
+    tr: On<SceneInstanceReady>,
     mut cmd: Commands,
     all_animations: Res<AllAnimations>,
     mut akq: Query<&mut AniData>,
     mut player_q: Query<&mut AnimationPlayer>,
     children: Query<&Children> 
 ) {
-    let parent_e = tr.target();
+    let parent_e = tr.event_target();
 
     let Ok(mut ani_data) = akq.get_mut(parent_e) else {
         return;

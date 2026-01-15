@@ -35,7 +35,7 @@ const ANIMATION_COUNT_M3: usize = 1;   // count for third model
 
 fn startup(
     mut cmd: Commands,
-    mut al : ResMut<AmbientLight>,
+    mut al : ResMut<GlobalAmbientLight>,
     mut materials: ResMut<Assets<StandardMaterial>>,
     mut meshes: ResMut<Assets<Mesh>>,
     assets: ResMut<AssetServer>,
